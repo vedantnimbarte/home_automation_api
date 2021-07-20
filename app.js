@@ -6,6 +6,8 @@ const logger = require("morgan");
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const deviceRoute = require("./routes/device");
+const configDeviceRouter = require("./routes/configureDevice");
+
 const app = express();
 
 app.use(logger("dev"));
@@ -17,5 +19,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/device", deviceRoute);
+app.use("/config", configDeviceRouter);
 
 module.exports = app;

@@ -14,4 +14,17 @@ router.get("/getAllDevices", function (req, res, next) {
     });
 });
 
+router.get("/assignRoomToUser", function (req, res, next) {
+  const { user_id, room_name } = req.query;
+  const connection = new Connection();
+  connection
+    .assignRoomToUser(user_id, room_name)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 module.exports = router;

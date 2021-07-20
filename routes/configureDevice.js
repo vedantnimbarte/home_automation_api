@@ -27,4 +27,17 @@ router.get("/assignRoomToUser", function (req, res, next) {
     });
 });
 
+router.get("/getRoomsAssignedToUser", function (req, res, next) {
+  const { user_id } = req.query;
+  const connection = new Connection();
+  connection
+    .getRoomsByUserId(user_id)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 module.exports = router;

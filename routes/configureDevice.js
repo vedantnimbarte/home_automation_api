@@ -41,17 +41,19 @@ router.get("/getRoomsAssignedToUser", function (req, res, next) {
 });
 
 router.get("/assignAppliance", function (req, res, next) {
-  const { user_id, appliance, switch_status, dimmer_status, relay, room_name } =
+  const { user_id, appliance, switch_status, dimmer_status, relay, room_name, device_type } =
     req.query;
+    console.log(req.query)
   const connection = new Connection();
   connection
-    .getRoomsByUserId(
+    .assignAppliance(
       user_id,
       appliance,
       switch_status,
       dimmer_status,
       relay,
-      room_name
+      room_name,
+      device_type
     )
     .then((result) => {
       res.json(result);

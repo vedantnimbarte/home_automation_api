@@ -40,6 +40,19 @@ router.get("/getRoomsAssignedToUser", function (req, res, next) {
     });
 });
 
+router.get("/getRoomInfo", function (req, res, next) {
+  const { user_id, room_name } = req.query;
+  const connection = new Connection();
+  connection
+    .getRoomInfo(user_id, room_name)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 router.get("/assignAppliance", function (req, res, next) {
   const { user_id, appliance, switch_status, dimmer_status, relay, room_name, device_type } =
     req.query;

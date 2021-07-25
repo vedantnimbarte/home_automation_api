@@ -76,4 +76,17 @@ router.get("/assignAppliance", function (req, res, next) {
     });
 });
 
+router.get("/addDeviceToInventory", function (req, res, next) {
+  const { device, type, no_of_relays, amp, serial, date } = req.query;
+  const connection = new Connection();
+  connection
+    .assignRoomToUser(device, type, no_of_relays, amp, serial, date)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 module.exports = router;

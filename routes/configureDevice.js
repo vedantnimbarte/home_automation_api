@@ -54,7 +54,7 @@ router.get("/getRoomInfo", function (req, res, next) {
 });
 
 router.get("/assignAppliance", function (req, res, next) {
-  const { user_id, appliance, switch_status, dimmer_status, relay, room_name, device_type } =
+  const { user_id, appliance, switch_status, dimmer_status, relay, room_name, device_type, serial_no } =
     req.query;
     console.log(req.query)
   const connection = new Connection();
@@ -66,7 +66,8 @@ router.get("/assignAppliance", function (req, res, next) {
       dimmer_status,
       relay,
       room_name,
-      device_type
+      device_type,
+      serial_no
     )
     .then((result) => {
       res.json(result);

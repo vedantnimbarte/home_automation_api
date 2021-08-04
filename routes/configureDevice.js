@@ -97,8 +97,6 @@ router.get("/getAppliancesAssignedToUser", function(req, res, next) {
   connection.getRoomsAssignedToUser(room, user)
   .then((result) => {
     res.json(result);
-    .catch((error) => {
-      console.log(error)
     })
   })
 })

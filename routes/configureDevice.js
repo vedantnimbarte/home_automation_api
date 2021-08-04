@@ -91,4 +91,16 @@ router.get("/addDeviceToInventory", function (req, res, next) {
     });
 });
 
+router.get("/getAppliancesAssignedToUser", function(req, res, next) {
+  const { room } = req.query;
+  const connection = new Connection();
+  connection.getRoomsAssignedToUser(room)
+  .then((result) => {
+    res.json(result);
+    .catch((error) => {
+      console.log(error)
+    })
+  })
+})
+
 module.exports = router;

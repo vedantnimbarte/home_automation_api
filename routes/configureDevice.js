@@ -92,9 +92,9 @@ router.get("/addDeviceToInventory", function (req, res, next) {
 });
 
 router.get("/getAppliancesAssignedToUser", function(req, res, next) {
-  const { room } = req.query;
+  const { room, user } = req.query;
   const connection = new Connection();
-  connection.getRoomsAssignedToUser(room)
+  connection.getRoomsAssignedToUser(room, user)
   .then((result) => {
     res.json(result);
     .catch((error) => {

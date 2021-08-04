@@ -97,8 +97,8 @@ router.get("/getAppliancesAssignedToUser", function(req, res, next) {
   connection.getRoomsAssignedToUser(room, user)
   .then((result) => {
     res.json(result);
-    })
-  })
-})
+    });
+  
+});
 
 module.exports = router;
